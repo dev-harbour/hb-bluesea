@@ -21,7 +21,7 @@ PROCEDURE Main()
 
       bs_End( w )
 
-      bs_WaitEvents()
+      bs_WaitEvents( w )
 
    ENDDO
 
