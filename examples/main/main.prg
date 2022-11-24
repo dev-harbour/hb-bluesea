@@ -1,27 +1,7 @@
-# hb-bluesea
+/*
+ *
+ */
 
-Harbour module implementing bindings, playground with graphics, with the use of [GLFW](https://www.glfw.org/) and [Cairo](https://gitlab.freedesktop.org/cairo/cairo).
-
-### Getting Started
-
-For more info see [getting started](examples/README.md).
-
-## Building
-
-- Build static library:
-
-   ```
-   hbmk2 hbbluesea.hbp
-   ```
-
-- Build and run sample and test code:
-
-   ```
-   hbmk2 main.prg
-   ./main
-   ```
-
-``` harbour
 #include "hbbluesea.ch"
 
 PROCEDURE Main()
@@ -48,5 +28,3 @@ PROCEDURE Main()
    bs_CloseWindow( w )
 
 RETURN
-```
-

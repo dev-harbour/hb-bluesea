@@ -1,0 +1,222 @@
+#ifndef HBBLUESEA_CH_
+#define HBBLUESEA_CH_
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+// tokens
+#define KEY_UNKNOWN            -1
+
+/* Printable keys */
+#define KEY_SPACE              32
+#define KEY_APOSTROPHE         39  /* ' */
+#define KEY_COMMA              44  /* , */
+#define KEY_MINUS              45  /* - */
+#define KEY_PERIOD             46  /* . */
+#define KEY_SLASH              47  /* / */
+#define KEY_0                  48
+#define KEY_1                  49
+#define KEY_2                  50
+#define KEY_3                  51
+#define KEY_4                  52
+#define KEY_5                  53
+#define KEY_6                  54
+#define KEY_7                  55
+#define KEY_8                  56
+#define KEY_9                  57
+#define KEY_SEMICOLON          59  /* ; */
+#define KEY_EQUAL              61  /* = */
+#define KEY_A                  65
+#define KEY_B                  66
+#define KEY_C                  67
+#define KEY_D                  68
+#define KEY_E                  69
+#define KEY_F                  70
+#define KEY_G                  71
+#define KEY_H                  72
+#define KEY_I                  73
+#define KEY_J                  74
+#define KEY_K                  75
+#define KEY_L                  76
+#define KEY_M                  77
+#define KEY_N                  78
+#define KEY_O                  79
+#define KEY_P                  80
+#define KEY_Q                  81
+#define KEY_R                  82
+#define KEY_S                  83
+#define KEY_T                  84
+#define KEY_U                  85
+#define KEY_V                  86
+#define KEY_W                  87
+#define KEY_X                  88
+#define KEY_Y                  89
+#define KEY_Z                  90
+#define KEY_LEFT_BRACKET       91  /* [ */
+#define KEY_BACKSLASH          92  /* \ */
+#define KEY_RIGHT_BRACKET      93  /* ] */
+#define KEY_GRAVE_ACCENT       96  /* ` */
+#define KEY_WORLD_1            161 /* non-US #1 */
+#define KEY_WORLD_2            162 /* non-US #2 */
+
+/* Function keys */
+#define KEY_ESCAPE             256
+#define KEY_ENTER              257
+#define KEY_TAB                258
+#define KEY_BACKSPACE          259
+#define KEY_INSERT             260
+#define KEY_DELETE             261
+#define KEY_RIGHT              262
+#define KEY_LEFT               263
+#define KEY_DOWN               264
+#define KEY_UP                 265
+#define KEY_PAGE_UP            266
+#define KEY_PAGE_DOWN          267
+#define KEY_HOME               268
+#define KEY_END                269
+#define KEY_CAPS_LOCK          280
+#define KEY_SCROLL_LOCK        281
+#define KEY_NUM_LOCK           282
+#define KEY_PRINT_SCREEN       283
+#define KEY_PAUSE              284
+#define KEY_F1                 290
+#define KEY_F2                 291
+#define KEY_F3                 292
+#define KEY_F4                 293
+#define KEY_F5                 294
+#define KEY_F6                 295
+#define KEY_F7                 296
+#define KEY_F8                 297
+#define KEY_F9                 298
+#define KEY_F10                299
+#define KEY_F11                300
+#define KEY_F12                301
+#define KEY_F13                302
+#define KEY_F14                303
+#define KEY_F15                304
+#define KEY_F16                305
+#define KEY_F17                306
+#define KEY_F18                307
+#define KEY_F19                308
+#define KEY_F20                309
+#define KEY_F21                310
+#define KEY_F22                311
+#define KEY_F23                312
+#define KEY_F24                313
+#define KEY_F25                314
+#define KEY_KP_0               320
+#define KEY_KP_1               321
+#define KEY_KP_2               322
+#define KEY_KP_3               323
+#define KEY_KP_4               324
+#define KEY_KP_5               325
+#define KEY_KP_6               326
+#define KEY_KP_7               327
+#define KEY_KP_8               328
+#define KEY_KP_9               329
+#define KEY_KP_DECIMAL         330
+#define KEY_KP_DIVIDE          331
+#define KEY_KP_MULTIPLY        332
+#define KEY_KP_SUBTRACT        333
+#define KEY_KP_ADD             334
+#define KEY_KP_ENTER           335
+#define KEY_KP_EQUAL           336
+#define KEY_LEFT_SHIFT         340
+#define KEY_LEFT_CONTROL       341
+#define KEY_LEFT_ALT           342
+#define KEY_LEFT_SUPER         343
+#define KEY_RIGHT_SHIFT        344
+#define KEY_RIGHT_CONTROL      345
+#define KEY_RIGHT_ALT          346
+#define KEY_RIGHT_SUPER        347
+#define KEY_MENU               348
+
+#define KEY_LAST               KEY_MENU
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+// types
+
+#define CAIRO                  0
+#define CAIRO_ARC              1
+#define CAIRO_ARC_FILLED       2
+#define CAIRO_BACKGROUND       3
+#define CAIRO_CIRCLE           4
+#define CAIRO_CIRCLE_FILLED    5
+#define CAIRO_CURVE            6
+#define CAIRO_ELLIPSE          7
+#define CAIRO_ELLIPSE_FILLED   8
+#define CAIRO_GETPIXEL         9
+#define CAIRO_IMAGE            10
+#define CAIRO_LINE             11
+#define CAIRO_LINES            12
+#define CAIRO_RGBTODEC         13
+#define CAIRO_POLYGON          14
+#define CAIRO_POLYGON_FILLED   15
+#define CAIRO_POLYLINE         16
+#define CAIRO_PUTPIXEL         17
+#define CAIRO_RECT             18
+#define CAIRO_RECTS            19
+#define CAIRO_RECT_FILLED      20
+#define CAIRO_RECT_MULTI_COLOR 21
+#define CAIRO_TRIANGLE         22
+#define CAIRO_TRIANGLE_FILLED  23
+#define CAIRO_WRITE_TO_PNG     24
+#define SIZE_OF_CAIRO          25
+
+#define TEXT                   0
+#define TEXT_FREE_TYPE         1
+#define TEXT_TEXT              2
+#define TEXT_TEXT_EXT          3
+#define SIZE_OF_TEXT           4
+
+#define GLFW                   0
+#define GLFW_GET_KEY           1
+#define GLFW_GET_MOUSEBUTTON   2
+#define GLFW_WIN_WIDTH         3
+#define GLFW_WIN_HEIGHT        4
+#define GLFW_WIN_MAXIMIZED     5
+#define GLFW_POLLEVENTS        6
+#define GLFW_WAITEVENTS        7
+#define GLFW_WAITEVENTSTIMEOUT 8
+#define SIZE_OF_GLFW           9
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+#define bs_Begin( w ) begin_drawing( w )
+#define bs_End( w ) end_drawing( w )
+
+// #define CAIRO_ARC
+// #define CAIRO_ARC_FILLED,
+#define bs_Background( w, hexColor )                              cairo_functions( w, CAIRO_BACKGROUND, hexColor )
+#define bs_Circle( w, x, y, radius, hexColor )                    cairo_functions( w, CAIRO_CIRCLE, x, y, radius, hexColor )
+#define bs_CircleFilled( w, x, y, radius, hexColor )              cairo_functions( w, CAIRO_CIRCLE_FILLED, x, y, radius, hexColor )
+// #define CAIRO_CURVE,
+// #define CAIRO_GETPIXEL,
+// #define CAIRO_IMAGE,
+#define bs_Line( w, x, y, width, height, hexColor )               cairo_functions( w, CAIRO_LINE, x, y, width, height, hexColor )
+#define bs_LineS( w, x, y, width, height, hexColor )              cairo_functions( w, CAIRO_LINES, x, y, width, height, hexColor )
+#define bs_RGBToDec( w, r, g, b )                                 cairo_functions( w, CAIRO_RGBTODEC, r, g, b )
+// #define CAIRO_POLYGON,
+// #define CAIRO_POLYGON_FILLED,
+// #define CAIRO_POLYLINE,
+#define bs_PutPixel( w, x, y, hexColor )                          cairo_functions( w, CAIRO_PUTPIXEL, x, y, hexColor )
+#define bs_Rect( w, x, y, width, height, radius, hexColor )       cairo_functions( w, CAIRO_RECT, x, y, width, height, radius, hexColor )
+#define bs_RectS( w, x, y, width, height, radius, hexColor )      cairo_functions( w, CAIRO_RECTS, x, y, width, height, radius, hexColor )
+#define bs_RectFilled( w, x, y, width, height, radius, hexColor ) cairo_functions( w, CAIRO_RECT_FILLED, x, y, width, height, radius, hexColor )
+// #define CAIRO_RECT_MULTI_COLOR,
+#define bs_Triangle( w, ax, ay, bx, by, cx, cy, hexColor )        cairo_functions( w, CAIRO_TRIANGLE, ax, ay, bx, by, cx, cy, hexColor )
+#define bs_TriangleFill( w, ax, ay, bx, by, cx, cy, hexColor )    cairo_functions( w, CAIRO_TRIANGLE_FILLED, ax, ay, bx, by, cx, cy, hexColor )
+#define bs_WriteToPng( w )                                        cairo_functions( w, CAIRO_WRITE_TO_PNG )
+
+#define bs_FreeType( w, fileName )         text_functions( w, TEXT_FREE_TYPE, fileName )
+#define bs_Text( w, text, x, y, hexColor ) text_functions( w, TEXT_TEXT, text, x, y, hexColor )
+// #define TEXT_TEXT_EXT
+
+#define bs_GetKey( w, key )             glfw_functions( w, GLFW_GET_KEY, key )
+#define bs_GetMouseButton( w, button )  glfw_functions( w, GLFW_GET_MOUSEBUTTON, button )
+#define bs_WinWidth( w )                glfw_functions( w, GLFW_WIN_WIDTH )
+#define bs_WinHeight( w )               glfw_functions( w, GLFW_WIN_HEIGHT )
+#define bs_WinMaximized( w )            glfw_functions( w, GLFW_WIN_MAXIMIZED )
+#define bs_PollEvents()                 glfw_functions( w, GLFW_POLLEVENTS )
+#define bs_WaitEvents()                 glfw_functions( w, GLFW_WAITEVENTS )
+#define bs_WaitEventsTimeout( timeout ) glfw_functions( w, GLFW_WAITEVENTSTIMEOUT, timeout )
+
+#endif /* HBBLUESEA_CH_ */

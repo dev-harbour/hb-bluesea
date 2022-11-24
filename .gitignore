@@ -1,0 +1,9 @@
+
+# hb-bluesea
+*.exe
+*.bak
+*.hbx
+*.log
+lib
+tmp
+extras
