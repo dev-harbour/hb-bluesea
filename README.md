@@ -50,5 +50,5 @@ PROCEDURE Main()
 RETURN
 ```
 
-![This is an image](https://github.com/dev-harbour/hb-bluesea/blob/main/examples/main/main.png "main" )
+![This is an image](examples/main/main.png)
 
