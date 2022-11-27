@@ -12,7 +12,7 @@ PROCEDURE Main()
    LOCAL r := 200
    LOCAL i
 
-   w = bs_CreateWindow( 720, 450, "Logo C" )
+   w := bs_CreateWindow( 720, 450, "Logo C" )
 
    WHILE( ! bs_MainLoop( w ) .AND. ! bs_GetKey( w, KEY_ESCAPE ) )
 
