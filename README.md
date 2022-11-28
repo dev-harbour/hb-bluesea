@@ -17,8 +17,8 @@ For more info see [getting started](examples/README.md).
 - Build and run sample and test code:
 
    ```
-   hbmk2 main.prg
-   ./main
+   hbmk2 logo_c.prg
+   ./logo_c
    ```
 
 ``` harbour
