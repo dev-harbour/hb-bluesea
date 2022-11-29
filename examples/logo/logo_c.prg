@@ -25,6 +25,7 @@ PROCEDURE Main()
 
          a := 2 * M_PI / 6
 
+         bs_Hexagon( w, x, y, r + 10, 0xfaf2fe )
          bs_HexagonFilled( w, x, y, r, 0x5c6bbf )
          FOR i := 0 TO 1
             x1 := x + r * cos( a * i + M_PI / 6 )
