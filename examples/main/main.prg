@@ -8,7 +8,7 @@ PROCEDURE Main()
 
    LOCAL w
 
-   w := bs_CreateWindow( 720, 450, "The blue sea" )
+   w := bs_CreateWindow( 680, 450, "The blue sea" )
 
    bs_FreeType( w, "../../font/9x18.ttf" )
 
