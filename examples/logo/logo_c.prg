@@ -9,7 +9,7 @@ PROCEDURE Main()
    LOCAL r := 200
    LOCAL i
 
-   w := bs_CreateWindow( 720, 450, "Logo C" )
+   w := bs_CreateWindow( 680, 450, "Logo C" )
 
    bs_FreeType( w, "../../font/9x18.ttf" )
 
