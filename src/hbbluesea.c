@@ -170,8 +170,6 @@ HB_FUNC( BS_CREATEWINDOW )
       w->width  = hb_parni( 1 );
       w->height = hb_parni( 2 );
       w->title  = hb_parc( 3 );
-      w->tmp_width  = 0;
-      w->tmp_height = 0;
 
       w->window = glfwCreateWindow( w->width, w->height, w->title, NULL, NULL );
       if( ! w->window )
@@ -192,6 +190,8 @@ HB_FUNC( BS_CREATEWINDOW )
 
    #if defined( GLFW_EXPOSE_NATIVE_WIN32 )
       w->dc = GetDC( glfwGetWin32Window( w->window ) );
+      w->sf = cairo_win32_surface_create_with_format( w->dc, CAIRO_FORMAT_ARGB32 );
+      w->cr = cairo_create( w->sf );
    #endif
    #if defined( GLFW_EXPOSE_NATIVE_X11 )
       w->xd = glfwGetX11Display();
@@ -233,8 +233,6 @@ HB_FUNC( BS_CLOSEWINDOW )
    if( w )
    {
       cairo_font_face_destroy( w->ff );
-      cairo_surface_destroy( w->sf );
-      cairo_destroy( w->cr );
 
       glfwDestroyWindow( w->window );
       free( w );
@@ -262,7 +260,9 @@ HB_FUNC( BEGIN_DRAWING )
       if( w->tmp_width != w->width || w->tmp_height != w->height )
       {
          w->sf = cairo_win32_surface_create_with_format( w->dc, CAIRO_FORMAT_ARGB32 );
+         cairo_destroy( w->cr )
          w->cr = cairo_create( w->sf );
+         cairo_surface_destroy( w->sf );
          w->tmp_width  = w->width;
          w->tmp_height = w->height;
       }
@@ -584,13 +584,39 @@ HB_FUNC( TEXT_FUNCTIONS )
       w->ff = cairo_ft_font_face_create_for_ft_face( aface, 0 );
       break;
 
-   case TEXT_TEXT:
+   case TEXT_CONST:
 
       cairo_set_font_face( w->cr, w->ff );
       cairo_set_font_size( w->cr, 20 );
       hex_to_rgb( w->cr, par4 );
       cairo_move_to( w->cr, par2, par3 );
       cairo_show_text( w->cr, par1 );
+      break;
+
+   case TEXT_EXTRA:
+
+      cairo_set_font_face( w->cr, w->ff );
+      cairo_set_font_size( w->cr, par4 );
+      cairo_text_extents( w->cr, par1, &w->te );
+      hex_to_rgb( w->cr, par5 );
+      cairo_move_to( w->cr, par2, par3 );
+      cairo_show_text( w->cr, par1 );
+
+      break;
+
+   case TEXT_WIDTH:
+
+      cairo_set_font_size( w->cr, par2 );
+      cairo_text_extents( w->cr, par1, &w->te );
+      ret = w->te.width;
+      printf( "textWidth %i \n", ret );
+      break;
+
+   case TEXT_HEIGHT:
+
+      cairo_set_font_size( w->cr, par2 );
+      cairo_text_extents( w->cr, par1, &w->te );
+      ret = w->te.height;
       break;
 
    default:

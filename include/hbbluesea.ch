@@ -141,34 +141,37 @@
 #define CAIRO_CIRCLE           4
 #define CAIRO_CIRCLE_FILLED    5
 #define CAIRO_CIRCLELINEWIDTH  6
-#define CAIRO_CURVE            7
-#define CAIRO_ELLIPSE          8
-#define CAIRO_ELLIPSE_FILLED   9
-#define CAIRO_GETPIXEL         10
-#define CAIRO_HEXAGON          11
-#define CAIRO_HEXAGON_FILLED   12
-#define CAIRO_IMAGE            13
-#define CAIRO_LINE             14
-#define CAIRO_LINES            15
-#define CAIRO_RGBTODEC         16
-#define CAIRO_POLYGON          17
-#define CAIRO_POLYGON_FILLED   18
-#define CAIRO_POLYLINE         19
-#define CAIRO_PUTPIXEL         20
-#define CAIRO_RECT             21
-#define CAIRO_RECTS            22
-#define CAIRO_RECT_FILLED      23
-#define CAIRO_RECT_MULTI_COLOR 24
-#define CAIRO_TRIANGLE         25
-#define CAIRO_TRIANGLE_FILLED  26
-#define CAIRO_WRITE_TO_PNG     27
-#define SIZE_OF_CAIRO          28
+#define CAIRO_CLIP_IMAGE       7
+#define CAIRO_CURVE            8
+#define CAIRO_ELLIPSE          9
+#define CAIRO_ELLIPSE_FILLED   10
+#define CAIRO_GETPIXEL         11
+#define CAIRO_HEXAGON          12
+#define CAIRO_HEXAGON_FILLED   13
+#define CAIRO_IMAGE            14
+#define CAIRO_LINE             15
+#define CAIRO_LINES            16
+#define CAIRO_RGBTODEC         17
+#define CAIRO_POLYGON          18
+#define CAIRO_POLYGON_FILLED   19
+#define CAIRO_POLYLINE         20
+#define CAIRO_PUTPIXEL         21
+#define CAIRO_RECT             22
+#define CAIRO_RECTS            23
+#define CAIRO_RECT_FILLED      24
+#define CAIRO_RECT_MULTI_COLOR 25
+#define CAIRO_TRIANGLE         26
+#define CAIRO_TRIANGLE_FILLED  27
+#define CAIRO_WRITE_TO_PNG     28
+#define SIZE_OF_CAIRO          29
 
 #define TEXT                   0
 #define TEXT_FREE_TYPE         1
-#define TEXT_TEXT              2
-#define TEXT_TEXT_EXT          3
-#define SIZE_OF_TEXT           4
+#define TEXT_CONST             2
+#define TEXT_EXTRA             3
+#define TEXT_WIDTH             4
+#define TEXT_HEIGHT            5
+#define SIZE_OF_TEXT           6
 
 #define GLFW                   0
 #define GLFW_GET_KEY           1
@@ -192,6 +195,7 @@
 #define bs_Circle( w, x, y, radius, hexColor )                     cairo_functions( w, CAIRO_CIRCLE, x, y, radius, hexColor )
 #define bs_CircleFilled( w, x, y, radius, hexColor )               cairo_functions( w, CAIRO_CIRCLE_FILLED, x, y, radius, hexColor )
 #define bs_CircleLineWidth( w, x, y, radius, lineWidth, hexColor ) cairo_functions( w, CAIRO_CIRCLELINEWIDTH, x, y, radius, lineWidth, hexColor )
+#define bs_ClipImage( w, x, y, radius )                            cairo_functions( w, CAIRO_CLIP_IMAGE, x, y, radius )
 // #define CAIRO_CURVE,
 // #define CAIRO_GETPIXEL,
 #define bs_Hexagon( w, x, y, radius, hexColor )                    cairo_functions( w, CAIRO_HEXAGON, x, y, radius, hexColor )
@@ -212,9 +216,11 @@
 #define bs_TriangleFilled( w, x, y, x1, y1, x2, y2, hexColor )     cairo_functions( w, CAIRO_TRIANGLE_FILLED, x, y, x1, y1, x2, y2, hexColor )
 #define bs_WriteToPng( w )                                         cairo_functions( w, CAIRO_WRITE_TO_PNG )
 //---
-#define bs_FreeType( w, fileName )         text_functions( w, TEXT_FREE_TYPE, fileName )
-#define bs_Text( w, text, x, y, hexColor ) text_functions( w, TEXT_TEXT, text, x, y, hexColor )
-// #define TEXT_TEXT_EXT
+#define bs_FreeType( w, fileName )                 text_functions( w, TEXT_FREE_TYPE, fileName )
+#define bs_Text( w, text, x, y, hexColor )         text_functions( w, TEXT_CONST, text, x, y, hexColor )
+#define bs_TextEx( w, text, x, y, size, hexColor ) text_functions( w, TEXT_EXTRA, text, x, y, size, hexColor )
+#define bs_TextWidth( w, text, size )              text_functions( w, TEXT_WIDTH, text, size )
+#define bs_TextHeight( w, text, size )             text_functions( w, TEXT_HEIGHT, text, size )
 //---
 #define bs_GetKey( w, key )                glfw_functions( w, GLFW_GET_KEY, key )
 #define bs_GetMouseButton( w, button )     glfw_functions( w, GLFW_GET_MOUSEBUTTON, button )

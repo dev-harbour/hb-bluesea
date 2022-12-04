@@ -66,6 +66,7 @@ typedef struct
    int              background;
    // cairo
    cairo_surface_t   *sf;
+   cairo_surface_t   *im;
    cairo_t           *cr;
    cairo_font_face_t *ff;
    //---
