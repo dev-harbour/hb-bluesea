@@ -593,8 +593,6 @@ HB_FUNC( TEXT_FUNCTIONS )
       void *text;
       cairo_show_text( w->cr, hb_parstr_utf8( 3, &text, NULL ) );
       hb_strfree( text );
-
-      //cairo_show_text( w->cr, par1 );
       break;
 
    case TEXT_EXTRA:
