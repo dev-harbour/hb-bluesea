@@ -11,7 +11,7 @@ PROCEDURE Main()
 
    w := bs_CreateWindow( 680, 450, "Logo C" )
 
-   bs_FreeType( w, "../../font/9x18.ttf" )
+   bs_FreeType( w, "../../font/9x18.bdf" )
 
    array := hb_ATokens( hb_MemoRead( "logo_c.prg" ), .T. )
 
