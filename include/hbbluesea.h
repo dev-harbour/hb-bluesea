@@ -65,10 +65,11 @@ typedef struct
    // color
    int              background;
    // cairo
-   cairo_surface_t   *sf;
-   cairo_surface_t   *im;
-   cairo_t           *cr;
-   cairo_font_face_t *ff;
+   cairo_surface_t     *sf;
+   cairo_surface_t     *im;
+   cairo_t             *cr;
+   cairo_font_face_t   *ff;
+   cairo_text_extents_t te;
    //---
 #if defined( GLFW_EXPOSE_NATIVE_WIN32 )
    HDC dc;
