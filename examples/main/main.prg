@@ -10,7 +10,7 @@ PROCEDURE Main()
 
    w := bs_CreateWindow( 680, 450, "The blue sea" )
 
-   bs_FreeType( w, "../../font/9x18.ttf" )
+   bs_FreeType( w, "../../font/9x18.bdf" )
 
    WHILE( ! bs_MainLoop( w ) .AND. ! bs_GetKey( w, KEY_ESCAPE ) )
 
