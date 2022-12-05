@@ -260,7 +260,7 @@ HB_FUNC( BEGIN_DRAWING )
       if( w->tmp_width != w->width || w->tmp_height != w->height )
       {
          w->sf = cairo_win32_surface_create_with_format( w->dc, CAIRO_FORMAT_ARGB32 );
-         cairo_destroy( w->cr )
+         cairo_destroy( w->cr );
          w->cr = cairo_create( w->sf );
          cairo_surface_destroy( w->sf );
          w->tmp_width  = w->width;
@@ -556,6 +556,7 @@ HB_FUNC( TEXT_FUNCTIONS )
    int par2 = hb_parni( 4 );
    int par3 = hb_parni( 5 );
    int par4 = hb_parni( 6 );
+   int par5 = hb_parni( 7 );
 
    int ret = 1;
    FT_Library alibrary;
@@ -586,10 +587,14 @@ HB_FUNC( TEXT_FUNCTIONS )
    case TEXT_CONST:
 
       cairo_set_font_face( w->cr, w->ff );
-      cairo_set_font_size( w->cr, 20 );
+      cairo_set_font_size( w->cr, 18 );
       hex_to_rgb( w->cr, par4 );
       cairo_move_to( w->cr, par2, par3 );
-      cairo_show_text( w->cr, par1 );
+      void *text;
+      cairo_show_text( w->cr, hb_parstr_utf8( 3, &text, NULL ) );
+      hb_strfree( text );
+
+      //cairo_show_text( w->cr, par1 );
       break;
 
    case TEXT_EXTRA:
