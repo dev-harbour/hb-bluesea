@@ -162,8 +162,7 @@
 #define CAIRO_RECT_MULTI_COLOR 25
 #define CAIRO_TRIANGLE         26
 #define CAIRO_TRIANGLE_FILLED  27
-#define CAIRO_WRITE_TO_PNG     28
-#define SIZE_OF_CAIRO          29
+#define SIZE_OF_CAIRO          28
 
 #define TEXT                   0
 #define TEXT_FREE_TYPE         1
@@ -214,7 +213,6 @@
 // #define CAIRO_RECT_MULTI_COLOR,
 #define bs_Triangle( w, x, y, x1, y1, x2, y2, hexColor )           cairo_functions( w, CAIRO_TRIANGLE, x, y, x1, y1, x2, y2, hexColor )
 #define bs_TriangleFilled( w, x, y, x1, y1, x2, y2, hexColor )     cairo_functions( w, CAIRO_TRIANGLE_FILLED, x, y, x1, y1, x2, y2, hexColor )
-#define bs_WriteToPng( w )                                         cairo_functions( w, CAIRO_WRITE_TO_PNG )
 //---
 #define bs_FreeType( w, fileName )                 text_functions( w, TEXT_FREE_TYPE, fileName )
 #define bs_Text( w, text, x, y, hexColor )         text_functions( w, TEXT_CONST, text, x, y, hexColor )
