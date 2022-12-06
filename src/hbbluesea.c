@@ -605,12 +605,13 @@ HB_FUNC( TEXT_FUNCTIONS )
       cairo_set_font_size( w->cr, par4 );
       hex_to_rgb( w->cr, par5 );
       cairo_move_to( w->cr, par2, par3 );
-      cairo_show_text( w->cr, par1 );
+      cairo_show_text( w->cr, par1 ? malloc_strdup( par1 ) : NULL ); // this is contradictory but added
 
       break;
 
    case TEXT_WIDTH:
 
+      cairo_set_font_face( w->cr, w->ff );
       cairo_set_font_size( w->cr, par2 );
       cairo_text_extents( w->cr, par1, &w->te );
       ret = w->te.width;
@@ -618,6 +619,7 @@ HB_FUNC( TEXT_FUNCTIONS )
 
    case TEXT_HEIGHT:
 
+      cairo_set_font_face( w->cr, w->ff );
       cairo_set_font_size( w->cr, par2 );
       cairo_text_extents( w->cr, par1, &w->te );
       ret = w->te.height;
