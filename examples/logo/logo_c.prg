@@ -3,17 +3,12 @@
 PROCEDURE Main()
 
    LOCAL w
-   LOCAL array
    LOCAL x, y, x1, y1, x2, y2
    LOCAL a
    LOCAL r := 200
    LOCAL i
 
-   w := bs_CreateWindow( 680, 450, "Logo C" )
-
-   bs_FreeType( w, "../../font/9x18.bdf" )
-
-   array := hb_ATokens( hb_MemoRead( "logo_c.prg" ), .T. )
+   w := bs_CreateWindow( 830, 450, "Logo C" )
 
    WHILE( ! bs_MainLoop( w ) .AND. ! bs_GetKey( w, KEY_ESCAPE ) )
 
@@ -23,10 +18,6 @@ PROCEDURE Main()
 
          x := bs_WinWidth( w ) / 2
          y := bs_WinHeight( w ) / 2
-
-         FOR i := 1 TO Len( array )
-            bs_Text( w, array[ i ], 10, i * 18, 0xb42aee )
-         NEXT
 
          a := 2 * M_PI / 6
 
@@ -51,6 +42,7 @@ PROCEDURE Main()
       bs_End( w )
 
       bs_WaitEvents( w )
+
    ENDDO
 
    bs_CloseWindow( w )
