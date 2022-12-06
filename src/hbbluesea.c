@@ -548,6 +548,12 @@ HB_FUNC( CAIRO_FUNCTIONS )
    return hb_retni( ret );
 }
 
+static char *malloc_strdup( const char *pszText )
+{
+   size_t nLen = strlen( pszText ) + 1;
+   return memcpy( malloc( nLen ), pszText, nLen );
+}
+
 // int text_functions( pBlueSea w, iText type, const char *par1, int par2, int par3, int par4  )
 HB_FUNC( TEXT_FUNCTIONS )
 {
@@ -590,9 +596,7 @@ HB_FUNC( TEXT_FUNCTIONS )
       cairo_set_font_size( w->cr, 18 );
       hex_to_rgb( w->cr, par4 );
       cairo_move_to( w->cr, par2, par3 );
-      void *text;
-      cairo_show_text( w->cr, hb_parstr_utf8( 3, &text, NULL ) );
-      hb_strfree( text );
+      cairo_show_text( w->cr, par1 ? malloc_strdup( par1 ) : NULL );
       break;
 
    case TEXT_EXTRA:
