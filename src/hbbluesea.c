@@ -149,6 +149,12 @@ static double *coord( cairo_t *cr, double x, double y )
    return a;
 }
 
+static char *malloc_strdup( const char *text )
+{
+   size_t len = strlen( text ) + 1;
+   return memcpy( malloc( len ), text, len );
+}
+
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 // API functions
 //BlueSea *bs_CreateWindow( int width, int height, const char *title )
@@ -546,12 +552,6 @@ HB_FUNC( CAIRO_FUNCTIONS )
          hb_retni( 0 );
    }
    return hb_retni( ret );
-}
-
-static char *malloc_strdup( const char *pszText )
-{
-   size_t nLen = strlen( pszText ) + 1;
-   return memcpy( malloc( nLen ), pszText, nLen );
 }
 
 // int text_functions( pBlueSea w, iText type, const char *par1, int par2, int par3, int par4  )
