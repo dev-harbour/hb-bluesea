@@ -7,7 +7,7 @@
 /* BlueSea */
 static HB_GARBAGE_FUNC( hb_bluesea_Destructor )
 {
-   BlueSea **ppBlueSea = ( BlueSea **) Cargo;
+   BlueSea **ppBlueSea = ( BlueSea ** ) Cargo;
 
    if( *ppBlueSea )
    {
@@ -23,7 +23,7 @@ static const HB_GC_FUNCS s_gcBlueSeaFuncs =
 
 BlueSea *hb_BlueSea_Param( int iParam )
 {
-   BlueSea **ppBlueSea = ( BlueSea **) hb_parptrGC( &s_gcBlueSeaFuncs, iParam );
+   BlueSea **ppBlueSea = ( BlueSea ** ) hb_parptrGC( &s_gcBlueSeaFuncs, iParam );
 
    if( ppBlueSea && *ppBlueSea )
    {
@@ -38,28 +38,28 @@ BlueSea *hb_BlueSea_Param( int iParam )
 
 BlueSea *hb_BlueSea_ParamGet( int iParam )
 {
-   BlueSea **ppBlueSea = ( BlueSea **) hb_parptrGC( &s_gcBlueSeaFuncs, iParam );
+   BlueSea **ppBlueSea = ( BlueSea ** ) hb_parptrGC( &s_gcBlueSeaFuncs, iParam );
 
    return ppBlueSea ? *ppBlueSea : NULL;
 }
 
 BlueSea *hb_BlueSea_ItemGet( PHB_ITEM pItem )
 {
-   BlueSea **ppBlueSea = ( BlueSea **) hb_itemGetPtrGC( pItem, &s_gcBlueSeaFuncs );
+   BlueSea **ppBlueSea = ( BlueSea ** ) hb_itemGetPtrGC( pItem, &s_gcBlueSeaFuncs );
 
    return ppBlueSea ? *ppBlueSea : NULL;
 }
 
 PHB_ITEM hb_BlueSea_ItemPut( PHB_ITEM pItem, BlueSea *pBlueSea )
 {
-   BlueSea **ppBlueSea = ( BlueSea **) hb_gcAllocate( sizeof( BlueSea *), &s_gcBlueSeaFuncs );
+   BlueSea **ppBlueSea = ( BlueSea ** ) hb_gcAllocate( sizeof( BlueSea *), &s_gcBlueSeaFuncs );
    *ppBlueSea = pBlueSea;
    return hb_itemPutPtrGC( pItem, ppBlueSea );
 }
 
 void hb_BlueSea_ItemClear( PHB_ITEM pItem )
 {
-   BlueSea **ppBlueSea = ( BlueSea **) hb_itemGetPtrGC( pItem, &s_gcBlueSeaFuncs );
+   BlueSea **ppBlueSea = ( BlueSea ** ) hb_itemGetPtrGC( pItem, &s_gcBlueSeaFuncs );
 
    if( ppBlueSea )
    {
