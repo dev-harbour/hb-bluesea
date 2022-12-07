@@ -606,7 +606,6 @@ HB_FUNC( TEXT_FUNCTIONS )
       hex_to_rgb( w->cr, par5 );
       cairo_move_to( w->cr, par2, par3 );
       cairo_show_text( w->cr, par1 ? malloc_strdup( par1 ) : NULL ); // this is contradictory but added
-
       break;
 
    case TEXT_WIDTH:
