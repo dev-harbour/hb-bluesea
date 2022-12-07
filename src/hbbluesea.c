@@ -551,7 +551,7 @@ HB_FUNC( CAIRO_FUNCTIONS )
       default:
          hb_retni( 0 );
    }
-   return hb_retni( ret );
+   hb_retni( ret );
 }
 
 // int text_functions( pBlueSea w, iText type, const char *par1, int par2, int par3, int par4  )
