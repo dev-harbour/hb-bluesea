@@ -178,11 +178,13 @@
 #define GLFW_GET_MOUSEBUTTON   2
 #define GLFW_WIN_WIDTH         3
 #define GLFW_WIN_HEIGHT        4
-#define GLFW_WIN_MAXIMIZED     5
-#define GLFW_POLLEVENTS        6
-#define GLFW_WAITEVENTS        7
-#define GLFW_WAITEVENTSTIMEOUT 8
-#define SIZE_OF_GLFW           9
+#define GLFW_WIN_MAXCOL        5
+#define GLFW_WIN_MAXROW        6
+#define GLFW_WIN_MAXIMIZED     7
+#define GLFW_POLLEVENTS        8
+#define GLFW_WAITEVENTS        9
+#define GLFW_WAITEVENTSTIMEOUT 10
+#define SIZE_OF_GLFW           11
 
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 
@@ -226,6 +228,8 @@
 #define bs_GetMouseButton( w, button )     glfw_functions( w, GLFW_GET_MOUSEBUTTON, button )
 #define bs_WinWidth( w )                   glfw_functions( w, GLFW_WIN_WIDTH )
 #define bs_WinHeight( w )                  glfw_functions( w, GLFW_WIN_HEIGHT )
+#define bs_WinMaxCol( w )                  glfw_functions( w, GLFW_WIN_MAXCOL )
+#define bs_WinMaxRow( w )                  glfw_functions( w, GLFW_WIN_MAXROW )
 #define bs_WinMaximized( w )               glfw_functions( w, GLFW_WIN_MAXIMIZED )
 #define bs_PollEvents( w )                 glfw_functions( w, GLFW_POLLEVENTS )
 #define bs_WaitEvents( w )                 glfw_functions( w, GLFW_WAITEVENTS )
