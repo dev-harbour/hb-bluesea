@@ -168,9 +168,10 @@
 #define TEXT_FREE_TYPE         1
 #define TEXT_CONST             2
 #define TEXT_EXTRA             3
-#define TEXT_WIDTH             4
-#define TEXT_HEIGHT            5
-#define SIZE_OF_TEXT           6
+#define TEXT_DISPOUTAT         4
+#define TEXT_WIDTH             5
+#define TEXT_HEIGHT            6
+#define SIZE_OF_TEXT           7
 
 #define GLFW                   0
 #define GLFW_GET_KEY           1
@@ -217,6 +218,7 @@
 #define bs_FreeType( w, fileName )                 text_functions( w, TEXT_FREE_TYPE, fileName )
 #define bs_Text( w, text, x, y, hexColor )         text_functions( w, TEXT_CONST, text, x, y, hexColor )
 #define bs_TextEx( w, text, x, y, size, hexColor ) text_functions( w, TEXT_EXTRA, text, x, y, size, hexColor )
+#define bs_DispOutAt( w, text, x, y, hexColor )    text_functions( w, TEXT_DISPOUTAT, text, x, y, hexColor )
 #define bs_TextWidth( w, text, size )              text_functions( w, TEXT_WIDTH, text, size )
 #define bs_TextHeight( w, text, size )             text_functions( w, TEXT_HEIGHT, text, size )
 //---
