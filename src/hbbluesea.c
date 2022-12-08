@@ -149,7 +149,7 @@ static double *coord( cairo_t *cr, double x, double y )
    return a;
 }
 
-static char *malloc_strdup( const char *text )
+static const char *malloc_strdup( const char *text )
 {
    size_t len = strlen( text ) + 1;
    return memcpy( malloc( len ), text, len );
