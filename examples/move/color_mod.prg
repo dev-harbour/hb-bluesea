@@ -10,7 +10,7 @@ PROCEDURE Main()
    LOCAL mod, col, row
    LOCAL c
 
-   w = bs_CreateWindow( 820, 450, "Ascii characters" )
+   w = bs_CreateWindow( 830, 450, "Ascii characters box drawing" )
 
    bs_FreeType( w, "../../font/9x18.bdf" )
 
@@ -21,17 +21,17 @@ PROCEDURE Main()
          bs_Background( w, 0x006994 )
 
          FOR mod := 0 TO 3
-            FOR row := 0 TO 10
-               FOR col := 0 TO 20
+            FOR row := 0 TO 24
+               FOR col := 0 TO 91
                   DO CASE
                   CASE col == 0  .AND. row == 0  ; c := "┌"
-                  CASE col == 0  .AND. row == 10 ; c := "└"
+                  CASE col == 0  .AND. row == 24 ; c := "└"
                   CASE col == 0                  ; c := "├"
-                  CASE col == 20 .AND. row == 0  ; c := "┐"
-                  CASE col == 20 .AND. row == 10 ; c := "┘"
-                  CASE col == 20                 ; c := "┤"
+                  CASE col == 91 .AND. row == 0  ; c := "┐"
+                  CASE col == 91 .AND. row == 24 ; c := "┘"
+                  CASE col == 91                 ; c := "┤"
                   CASE                 row == 0  ; c := "┬"
-                  CASE                 row == 10 ; c := "┴"
+                  CASE                 row == 24 ; c := "┴"
                   OTHERWISE                      ; c := "┼"
                   ENDCASE
                   bs_DispOutAt( w, c, col, row, Color( col, row + mod ) )
