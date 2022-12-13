@@ -171,7 +171,8 @@
 #define TEXT_DISPOUTAT         4
 #define TEXT_WIDTH             5
 #define TEXT_HEIGHT            6
-#define SIZE_OF_TEXT           7
+#define TEXT_WINDOWTITLE       7
+#define SIZE_OF_TEXT           8
 
 #define GLFW                   0
 #define GLFW_GET_KEY           1
@@ -223,6 +224,7 @@
 #define bs_DispOutAt( w, text, col, row, hexColor ) text_functions( w, TEXT_DISPOUTAT, text, col, row, hexColor )
 #define bs_TextWidth( w, text, size )               text_functions( w, TEXT_WIDTH, text, size )
 #define bs_TextHeight( w, text, size )              text_functions( w, TEXT_HEIGHT, text, size )
+#define bs_WindowTitle( w, text )                   text_functions( w, TEXT_WINDOWTITLE, text )
 //---
 #define bs_GetKey( w, key )                glfw_functions( w, GLFW_GET_KEY, key )
 #define bs_GetMouseButton( w, button )     glfw_functions( w, GLFW_GET_MOUSEBUTTON, button )

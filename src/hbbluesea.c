@@ -149,12 +149,6 @@ static double *coord( cairo_t *cr, double x, double y )
    return a;
 }
 
-static const char *malloc_strdup( const char *text )
-{
-   size_t len = strlen( text ) + 1;
-   return memcpy( malloc( len ), text, len );
-}
-
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 // API functions
 //BlueSea *bs_CreateWindow( int width, int height, const char *title )
@@ -268,10 +262,10 @@ HB_FUNC( BEGIN_DRAWING )
    #if defined( GLFW_EXPOSE_NATIVE_WIN32 )
       if( w->tmp_width != w->width || w->tmp_height != w->height )
       {
+         cairo_surface_destroy( w->sf );
          w->sf = cairo_win32_surface_create_with_format( w->dc, CAIRO_FORMAT_ARGB32 );
          cairo_destroy( w->cr );
          w->cr = cairo_create( w->sf );
-         cairo_surface_destroy( w->sf );
          w->tmp_width  = w->width;
          w->tmp_height = w->height;
       }
@@ -600,7 +594,7 @@ HB_FUNC( TEXT_FUNCTIONS )
       cairo_set_font_size( w->cr, 18 );
       hex_to_rgb( w->cr, par4 );
       cairo_move_to( w->cr, par2, par3 );
-      cairo_show_text( w->cr, par1 ? malloc_strdup( par1 ) : NULL );
+      cairo_show_text( w->cr, par1 );
       break;
 
    case TEXT_EXTRA:
@@ -609,17 +603,16 @@ HB_FUNC( TEXT_FUNCTIONS )
       cairo_set_font_size( w->cr, par4 );
       hex_to_rgb( w->cr, par5 );
       cairo_move_to( w->cr, par2, par3 );
-      cairo_show_text( w->cr, par1 ? malloc_strdup( par1 ) : NULL );
+      cairo_show_text( w->cr, par1 );
       break;
 
    case TEXT_DISPOUTAT:
 
       cairo_set_font_face( w->cr, w->ff );
       cairo_set_font_size( w->cr, 18 );
-      cairo_font_extents( w->cr, &w->fe );
       hex_to_rgb( w->cr, par4 );
-      cairo_move_to( w->cr, par2 * 9, par3 * 18 + w->fe.ascent + w->fe.descent - w->fe.descent );
-      cairo_show_text( w->cr, par1 ? malloc_strdup( par1 ) : NULL );
+      cairo_move_to( w->cr, par2 * 9, par3 * 18 + 14 );
+      cairo_show_text( w->cr, par1 );
       break;
 
    case TEXT_WIDTH:
@@ -636,6 +629,11 @@ HB_FUNC( TEXT_FUNCTIONS )
       cairo_set_font_size( w->cr, par2 );
       cairo_text_extents( w->cr, par1, &w->te );
       ret = w->te.height;
+      break;
+
+   case TEXT_WINDOWTITLE:
+
+      glfwSetWindowTitle( w->window, par1 );
       break;
 
    default:
@@ -703,7 +701,7 @@ HB_FUNC( GLFW_FUNCTIONS )
 
    case GLFW_WAITEVENTSTIMEOUT:
 
-      glfwWaitEventsTimeout( par1 );
+      glfwWaitEventsTimeout( ( double ) par1 );
       break;
 
    default:
